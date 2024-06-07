@@ -2,10 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import { GoogleAuth } from 'google-auth-library';
-import fs from 'fs';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -18,8 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Chemin vers votre fichier d'identification JSON
-const KEY_FILE_PATH = 'C:/Users/kenne/Desktop/Chatbot/kenne-mqcu-e488f34f412b.json';
+const KEY_FILE_PATH = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 app.post('/dialogflow', async (req, res) => {
     const projectId = 'kenne-mqcu'; // Remplacez par votre ID de projet
@@ -69,6 +70,9 @@ app.post('/dialogflow', async (req, res) => {
     }
 });
 
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+export default app;
