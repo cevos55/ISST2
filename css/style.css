@@ -4365,8 +4365,8 @@ textarea.form-input {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
-	width: 136px;
-	height: 136px;
+	width: 145px;
+	height: 145px;
 	flex-shrink: 0;
 	margin-top: 20px;
 	border: 6px solid #ffffff;

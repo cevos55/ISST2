@@ -637,7 +637,7 @@ button {
 .images_4{
      width: 100%;
      size: 100cm;
-     zoom: 1.1;
+     /* zoom: 1.1; */
      float: left;
      background-image: url(../images/GetPaidStock\ 7.png);
      height: auto;
@@ -646,7 +646,7 @@ button {
 .images_5{
      width: 100%;
      float: left;
-     zoom: 1.1;
+     /* zoom: 1.1; */
      background-image: url(../images/GetPaidStock\ 8.png);
      height: auto;
 }
@@ -654,7 +654,7 @@ button {
 .images_6{
      width: 100%;
      float: left;
-     zoom: 1.1;
+     /* zoom: 1.1; */
      background-image: url(../images/GetPaidStock\ 9.png);
      height: auto;
      
@@ -857,7 +857,7 @@ p {
 
 .images_middle{
     float: left;
-    background-image: url(../images/Mask\ group.png);
+    background-image: url(../images/Mask\ group12.png);
     position: relative;
     z-index: 1;
 }

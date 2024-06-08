@@ -2,6 +2,17 @@
 .espace{
 	float: right;
 }
+/* .ma-tup{
+	margin-top: 10em;
+} */
+.ma-bottom{
+	margin-bottom: 5em;
+	/* margin-top: 5em; */
+}
+.ma-bottom1{
+	margin-bottom: 7em;
+	
+}
 
 /*
 * Trunk version 2.0.1

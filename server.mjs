@@ -1,10 +1,10 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import { GoogleAuth } from 'google-auth-library';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -69,7 +69,6 @@ app.post('/dialogflow', async (req, res) => {
         res.status(500).json({ error: 'Erreur serveur' });
     }
 });
-
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
