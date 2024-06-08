@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width height=device-height initial-scale=1.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/logoisstABFORCON.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700%7CZilla+Slab:300,400,500,700,700i%7CGloria+Hallelujah">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrapx.min.css">
     <link rel="stylesheet" href="css/responsivex.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style6.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <script src="script.js" defer></script>
     
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
@@ -86,7 +90,10 @@
         </section>
         <!-- Allumni -->
         <section id="section0" class="section section-lg bg-default text-center section-deroule pt-5">
-        <h2 class="wow fadeIn  bold">2019-2020</h2>
+        
+          
+        
+          <h2 class="wow fadeIn  bold">2019-2020</h2>
         
         <div class="container mb-5">
         <!-- Owl Carousel-->
@@ -294,23 +301,26 @@
   </div>
   </section>
 
-<!-- chatbot -->
-<div id="chat-icon">
-  💬
-</div>
-<div id="chat-container">
-  <div id="chat-header">
-      <span>Chatbot</span>
-      <button id="close-button">&times;</button>
-  </div>
-  <div id="chatbox">
-      <div id="chat-content">
-          <div class="message bot-message">Bonjour! Comment puis-je vous aider aujourd'hui?</div>
-      </div>
-  </div>
-  <div id="chat-input">
-      <input type="text" id="user-input" placeholder="Tapez votre message ici...">
-      <button id="send-button">Envoyer</button>
+ <!-- chatbot -->
+       
+ <button class="chatbot-toggler">
+  <span class="material-symbols-rounded">mode_comment</span>
+  <span class="material-symbols-outlined">close</span>
+</button>
+<div class="chatbot">
+  <header>
+    <h2 class="bold write">Chatbot</h2>
+    <span class="close-btn material-symbols-outlined">close</span>
+  </header>
+  <ul class="chatbox">
+    <li class="chat incoming">
+      <span class="material-symbols-outlined">smart_toy</span>
+      <p>salut👋<br>En quoi puis-je vous aider aujourdhui?</p>
+    </li>
+  </ul>
+  <div class="chat-input">
+    <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+    <span id="send-btn" class="material-symbols-rounded">send</span>
   </div>
 </div>
 
