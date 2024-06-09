@@ -217,7 +217,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   bottom: 90px;
   width: 100%;
   max-width: 420px;
-  max-height: 80vh;
+  max-height: 65vh;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -261,7 +261,7 @@ header h2 {
 
 .chatbot .chatbox {
   overflow-y: auto;
-  max-height: calc(80vh - 122px); /* Adjust height based on header and input heights */
+  max-height: calc(65vh - 132px); /* Adjust height based on header and input heights */
   padding: 20px;
 	margin-bottom: 100px;
 }
