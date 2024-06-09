@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import { GoogleAuth } from 'google-auth-library';
 import fs from 'fs';
+import { check, validationResult } from 'express-validator';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,7 +38,16 @@ fs.stat(KEY_FILE_PATH, (err, stats) => {
     }
 });
 
-app.post('/dialogflow', async (req, res) => {
+app.post('/dialogflow', [
+    check('queryInput').exists().withMessage('queryInput est requis'),
+    check('queryInput.text').exists().withMessage('queryInput.text est requis'),
+    check('queryInput.text.text').isString().withMessage('queryInput.text.text doit être une chaîne de caractères')
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const projectId = 'kenne-mqcu'; // Remplacez par votre ID de projet
     const sessionId = 'quickstart-session-id';
 
@@ -73,15 +83,15 @@ app.post('/dialogflow', async (req, res) => {
         if (!response.ok) {
             const errorText = await response.text();
             console.error("Error Response:", errorText);
-            throw new Error('Erreur réseau');
+            throw new Error(`Erreur réseau: ${errorText}`);
         }
 
         const data = await response.json();
         console.log("Response Data:", data);
         res.json(data);
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({ error: 'Erreur serveur' });
+        console.error('Error:', error.message);
+        res.status(500).json({ error: `Erreur serveur: ${error.message}` });
     }
 });
 
@@ -90,3 +100,5 @@ app.listen(port, () => {
 });
 
 export default app;
+
+
