@@ -23,6 +23,11 @@ app.use((req, res, next) => {
 // Récupérer le contenu du fichier de clé JSON à partir de la variable d'environnement
 const keyFileContents = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
 
+// Route pour renvoyer une réponse de test à la route /api/server
+app.get('/api/server', (req, res) => {
+    res.send('Hello from server!');
+});
+
 app.post('/dialogflow', async (req, res) => {
     const projectId = 'kenne-mqcu'; // Remplacez par votre ID de projet
     const sessionId = 'quickstart-session-id';
