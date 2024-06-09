@@ -5,6 +5,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import { GoogleAuth } from 'google-auth-library';
+import fs from 'fs';
+
+// Chemin vers votre fichier de clés JSON
+const credentialsPath = './credentials.json';
+
+// Charger le contenu du fichier JSON
+const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,14 +27,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Récupérer le contenu du fichier de clé JSON à partir de la variable d'environnement
-const keyFileContents = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
-
-if (!keyFileContents) {
-    console.error('GOOGLE_APPLICATION_CREDENTIALS_JSON is not defined in the environment variables.');
-    process.exit(1);
-}
-
 // Route pour renvoyer une réponse de test à la route /api/server
 app.get('/api/server', (req, res) => {
     res.send('Hello from server!');
@@ -41,9 +40,9 @@ app.post('/dialogflow', async (req, res) => {
     console.log("Request Body:", requestBody);
 
     try {
-        // Utiliser le contenu pour charger les informations d'identification
+        // Utiliser les informations d'identification à partir du fichier de clés JSON
         const auth = new GoogleAuth({
-            credentials: JSON.parse(keyFileContents), // Convertir le contenu en objet JSON
+            credentials: credentials,
             scopes: 'https://www.googleapis.com/auth/cloud-platform'
         });
 
@@ -69,8 +68,7 @@ app.post('/dialogflow', async (req, res) => {
         if (!response.ok) {
             const errorText = await response.text();
             console.error("Error Response:", errorText);
-            res.status(response.status).json({ error: errorText });
-            return;
+            throw new Error('Erreur réseau');
         }
 
         const data = await response.json();
