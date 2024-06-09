@@ -5,20 +5,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import { GoogleAuth } from 'google-auth-library';
-import fs from 'fs';
-
-// Chemin vers votre fichier de clés JSON
-const credentialsPath = './credentials.json';
-
-// Charger le contenu du fichier JSON
-const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-// Middleware pour gérer les CORS
+// Middleware pour gÃ©rer les CORS
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -27,7 +20,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// Route pour renvoyer une réponse de test à la route /api/server
+// RÃ©cupÃ©rer le contenu du fichier de clÃ© JSON Ã  partir de la variable d'environnement
+const keyFileContents = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
+
+// Route pour renvoyer une rÃ©ponse de test Ã  la route /api/server
 app.get('/api/server', (req, res) => {
     res.send('Hello from server!');
 });
@@ -40,15 +36,15 @@ app.post('/dialogflow', async (req, res) => {
     console.log("Request Body:", requestBody);
 
     try {
-        // Utiliser les informations d'identification à partir du fichier de clés JSON
+        // Utiliser le contenu pour charger les informations d'identification
         const auth = new GoogleAuth({
-            credentials: credentials,
+            credentials: JSON.parse(keyFileContents), // Convertir le contenu en objet JSON
             scopes: 'https://www.googleapis.com/auth/cloud-platform'
         });
 
         const client = await auth.getClient();
 
-        // Obtient le jeton d'accès OAuth2
+        // Obtient le jeton d'accÃ¨s OAuth2
         const token = await client.getAccessToken();
 
         const url = `https://dialogflow.googleapis.com/v2/projects/${projectId}/agent/sessions/${sessionId}:detectIntent`;
@@ -68,7 +64,7 @@ app.post('/dialogflow', async (req, res) => {
         if (!response.ok) {
             const errorText = await response.text();
             console.error("Error Response:", errorText);
-            throw new Error('Erreur réseau');
+            throw new Error('Erreur rÃ©seau');
         }
 
         const data = await response.json();
