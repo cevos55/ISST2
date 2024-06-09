@@ -2,9 +2,9 @@
   "name": "chatbot",
   "version": "1.0.0",
   "description": "A chatbot server",
-  "main": "api/server.mjs",
+  "main": "server.mjs",
   "scripts": {
-    "start": "node api/server.mjs"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@google-cloud/dialogflow": "^3.3.0",
