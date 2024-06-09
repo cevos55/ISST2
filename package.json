@@ -2,7 +2,7 @@
   "name": "chatbot",
   "version": "1.0.0",
   "description": "A chatbot server",
-  "main": "css/server.mjs",
+  "main": "./server.mjs",
   "scripts": {
     "start": "node server.mjs"
   },
