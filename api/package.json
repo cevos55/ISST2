@@ -4,7 +4,7 @@
   "description": "A chatbot server",
   "main": "api/server.mjs",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node api/server.mjs"
   },
   "dependencies": {
     "@google-cloud/dialogflow": "^3.3.0",
