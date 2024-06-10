@@ -5,14 +5,27 @@
 /* .ma-tup{
 	margin-top: 10em;
 } */
+ /* .di{
+	display: flex;
+	align-content: flex-end;
+	flex-direction: column;
+ } */
 .ma-bottom{
-	margin-bottom: 5em;
+	
+	margin-bottom: 2em;
+	/* margin-top: 5em; */
+}
+
+.ma-bottom1{
+	
+	margin-bottom: 50em;
 	/* margin-top: 5em; */
 }
 .ma-bottom1{
 	margin-bottom: 7em;
 	
 }
+
 
 /*
 * Trunk version 2.0.1
@@ -23,6 +36,7 @@
 */
 a:focus,
 button:focus {
+	
 	outline: none !important;
 }
 

@@ -8,6 +8,11 @@ button:focus {
 }
  .brand-logo{
 zoom: 1.4;}
+
+.justi {
+	text-align: justify;
+	
+  }
 .vert{
 	color: rgb(0, 104, 0);
 }
