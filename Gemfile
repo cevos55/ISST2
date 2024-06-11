@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
+
+gem 'jekyll', '~> 3.9'
 gem 'github-pages', group: :jekyll_plugins
-gem 'jekyll-seo-tag'
-gem 'jekyll-paginate'
-gem 'jekyll-github-metadata'
-gem 'jekyll-relative-links'
+
+# Ajoutez toute gem supplémentaire dont vous avez besoin
+gem 'csv'
+gem 'faraday-retry'
