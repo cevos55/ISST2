@@ -1,0 +1,17 @@
+title: Mon Site
+description: Un site génial généré avec Jekyll
+theme: jekyll-theme-primer
+
+# Configuration pour GitHub Pages
+repository: cevos55/ISST2
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-github-metadata
+  - jekyll-relative-links
+
+# Configuration de pagination
+paginate: 5
+paginate_path: "/page:num/"
